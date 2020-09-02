@@ -1,0 +1,50 @@
+----------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /home/dmd/Dropbox/Cattaneo-Drukker-Holland/bfit-fix/bfitp.log
+  log type:  text
+ opened on:  21 Mar 2014, 14:02:03
+
+. clear all
+
+. adopath ++.
+  [1]              "."
+  [2]  (BASE)      "/usr/local/stata13/ado/base/"
+  [3]  (SITE)      "/usr/local/ado/"
+  [4]  (PERSONAL)  "~/ado/personal/"
+  [5]  (PLUS)      "~/ado/stbplus/"
+  [6]  (OLDPLACE)  "~/ado/"
+  [7]              "/home/dmd/ado/dmdtools"
+
+. 
+. query born 
+15 Jan 2014
+
+. query compilenumber 
+Compile number 209
+
+. which bfit
+./bfit.ado
+*! version 2.0.2  21Mar2014
+
+. 
+. sysuse auto, clear
+(1978 Automobile Data)
+
+. generate binary=round(runiform())   // You can generate more categorical
+
+.                                     //  variables if you want, but the
+.                                     //  result is the same
+. bfit logit foreign binary rep78
+
+bfit logit results sorted by bic
+-----------------------------------------------------------------------------
+       Model |    Obs    ll(null)   ll(model)     df          AIC         BIC
+-------------+---------------------------------------------------------------
+     _bfit_2 |     69   -42.40073    -27.2939      6      66.5878    79.99244
+     _bfit_1 |     69   -42.40073   -42.29575      2     88.59151    93.05972
+-----------------------------------------------------------------------------
+               Note:  N= used in calculating BIC
+(results _bfit_2 are active now)
+
+. 
+. capture log close
