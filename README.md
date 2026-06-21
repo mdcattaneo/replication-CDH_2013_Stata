@@ -2,7 +2,7 @@
 
 Replication files for simulation results.
 
-This software became part of the Stata: [teffects](https://www.stata.com/manuals/teteffectsmultivalued.pdf)
+This software became part of Stata: [teffects](https://www.stata.com/manuals/causalteffects.pdf)
 
 ## Reference
 
